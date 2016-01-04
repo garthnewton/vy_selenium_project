@@ -17,6 +17,8 @@ require_relative '../libs/eloqua_banner'
 require_relative '../libs/eloqua_login_page'
 require_relative '../libs/eloqua_contacts_page'
 require_relative '../libs/common_features'
+require_relative '../libs/environment_variables'
 
 include CommonFeatures
+include EnvironmentVariables
 
