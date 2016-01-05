@@ -1,2 +1,3 @@
 *.idea
 libs/environment_variables.rb
+bin/*
