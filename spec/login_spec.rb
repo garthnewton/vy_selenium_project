@@ -30,9 +30,7 @@ describe LoginPage do
       end
 
       it 'enters a valid email address and password then logs in expecting the Dashboard page' do
-        @my_page.login_email_field.send_keys VIDYARD_LOGIN_NAME
-        @my_page.login_password_field.send_keys VIDYARD_LOGIN_PASSWORD
-        @my_page.login_button.click
+        @my_page.log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
         expect(@driver.title).to eq('Video Marketing & Sales Enablement') #should be a property for the Dashboard page object
       end
     end
@@ -44,9 +42,7 @@ describe LoginPage do
 
       it 'enters a valid email address with an invalid password expecting to see an error' do
         expect(viewing_expected_page?(@driver, @my_page)).to eq(true)
-        @my_page.login_email_field.send_keys VIDYARD_LOGIN_NAME
-        @my_page.login_password_field.send_keys LOGIN_BAD_PASSWORD
-        @my_page.login_button.click
+        @my_page.log_into_vidyard(VIDYARD_LOGIN_NAME, LOGIN_BAD_PASSWORD)
         expect(@my_page.login_message_block.text).to include(@my_page.login_error_message)
       end
     end
@@ -58,9 +54,7 @@ describe LoginPage do
 
       it 'enters an invalid email address with any password expecting to see an error' do
         expect(viewing_expected_page?(@driver, @my_page)).to eq(true)
-        @my_page.login_email_field.send_keys LOGIN_BAD_EMAIL
-        @my_page.login_password_field.send_keys VIDYARD_LOGIN_PASSWORD
-        @my_page.login_button.click
+        @my_page.log_into_vidyard(LOGIN_BAD_EMAIL, VIDYARD_LOGIN_PASSWORD)
         expect(@my_page.login_message_block.text).to include(@my_page.login_error_message)
       end
     end
