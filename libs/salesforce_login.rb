@@ -33,6 +33,7 @@ class SalesforceLoginPage
 
 #functions
   def open_web_page
+    puts url
     @active_driver.get(url)
   end
 
@@ -40,11 +41,11 @@ class SalesforceLoginPage
     # Takes the user's email and password, walks through the standard login path, and returns the Dashboard screen
     # Assumes a valid credential set; error checking and handling can be added later.
 
-    @active_driver.get(url)
+    open_web_page
+    wait.until {salesforce_username.displayed?}
 
     SalesforceBanner.new(@active_driver).log_out_of_salesforce if is_already_logged_in?
 
-    wait.until {salesforce_username.displayed?}
     salesforce_username.send_keys username
     salesforce_password.send_keys password
     login_button.click

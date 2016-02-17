@@ -22,7 +22,7 @@ describe 'Simple Browser check' do
   end
 
   it 'adds user name and password' do
-    @login_page.log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+    @login_page.log_into_vidyard!(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
     wait.until {@my_dashboard.first_player_edit_button.displayed?}
   end
 

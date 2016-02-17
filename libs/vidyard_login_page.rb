@@ -57,7 +57,7 @@ class LoginPage
     @active_driver.get(url)
   end
 
-  def log_into_vidyard (username, password)
+  def log_into_vidyard! (username, password)
     # Takes the user's email and password, walks through the standard login path, and returns the Dashboard screen
     # Assumes a valid credential set; error checking and handling can be added later.
 
@@ -69,6 +69,7 @@ class LoginPage
     login_password_field.send_keys password
     login_button.click
 
+    return VidyardDashboardPage
   end
 
   def is_already_logged_in?

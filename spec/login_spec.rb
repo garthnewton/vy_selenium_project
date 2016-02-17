@@ -27,21 +27,40 @@ describe LoginPage do
       end
 
       it 'enters a valid email address and password then logs in expecting the Dashboard page' do
-        @my_page.log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
-        expect(@driver.title).to eq('Video Marketing & Sales Enablement') #should be a property for the Dashboard page object
+        @my_page = @my_page.log_into_vidyard!(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+        expect(@driver.title).to eq(@my_page.title)
+      end
+    end
+
+    context 'with a valid set of Solo User credentials' do
+      after(:all) do
+        #Using the user drop down menu, log out as the user would
+        VidyardBanner.new(@driver).log_out_of_vidyard
+      end
+
+      it 'enters a valid email address and password then logs in expecting the Dashboard page' do
+        @my_page = @my_page.log_into_vidyard!(VIDYARD_LOGIN_SOLO_NAME, VIDYARD_LOGIN_SOLO_PASSWORD)
+        expect(@driver.title).to eq(@my_page.title)
+      end
+    end
+
+    context 'with a known Salesforce Guest account' do
+      it 'logs into Salesforce to create a Vidyard session ' do
+        SalesforceLoginPage.new(@driver, SALESFORCE_LOGIN_URL).log_into_salesforce(SALESFORCE_LOGIN_SFGUEST_NAME, SALESFORCE_LOGIN_SFGUEST_PASSWORD)
+        @solo_page = VidyardGuestPasswordPage.new(@driver, BASE_URL).switch_to_vidyard
       end
     end
 
     context 'with an invalid password' do
       it 'enters a valid email address with an invalid password expecting to see an error' do
-        @my_page.log_into_vidyard(VIDYARD_LOGIN_NAME, LOGIN_BAD_PASSWORD)
+        @my_page.log_into_vidyard!(VIDYARD_LOGIN_NAME, LOGIN_BAD_PASSWORD)
         expect(@my_page.login_message_block.text).to include(@my_page.login_error_message)
       end
     end
 
     context 'with an invalid email' do
       it 'enters an invalid email address with any password expecting to see an error' do
-        @my_page.log_into_vidyard(LOGIN_BAD_EMAIL, VIDYARD_LOGIN_PASSWORD)
+        @my_page.log_into_vidyard!(LOGIN_BAD_EMAIL, VIDYARD_LOGIN_PASSWORD)
         expect(@my_page.login_message_block.text).to include(@my_page.login_error_message)
       end
     end

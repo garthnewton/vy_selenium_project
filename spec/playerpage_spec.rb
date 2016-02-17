@@ -5,7 +5,7 @@ describe PlayerSettingsPage do
   describe 'User logs in and edits an existing player' do
     before(:all) do
       @driver = create_active_driver!
-      LoginPage.new(@driver, BASE_URL).log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+      LoginPage.new(@driver, BASE_URL).log_into_vidyard!(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
       VidyardDashboardPage.new(@driver, BASE_URL).first_player_edit_button.click
       @summary_page = PlayerSummaryPage.new(@driver)
       @my_page = PlayerSettingsPage.new(@driver)

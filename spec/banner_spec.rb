@@ -4,7 +4,7 @@ describe VidyardBanner do
   describe 'User logs in and interacts with the Banner' do
     before(:all) do
       @driver = create_active_driver!
-      LoginPage.new(@driver, BASE_URL).log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+      LoginPage.new(@driver, BASE_URL).log_into_vidyard!(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
       @my_banner = VidyardBanner.new(@driver)
     end
 

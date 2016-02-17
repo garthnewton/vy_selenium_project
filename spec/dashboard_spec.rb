@@ -4,7 +4,7 @@ describe VidyardDashboardPage do
   describe 'User logs in and is viewing the Vidyard Dashboard Page' do
     before(:all) do
       @driver = create_active_driver!
-      LoginPage.new(@driver, BASE_URL).log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+      LoginPage.new(@driver, BASE_URL).log_into_vidyard!(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
       @my_page = VidyardDashboardPage.new(@driver, BASE_URL)
       @my_wizard = PlayerWizardPage.new(@driver)
     end #before
