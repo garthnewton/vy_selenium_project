@@ -1,5 +1,6 @@
 require 'selenium-webdriver'
 require 'rspec'
+require 'raakt'
 
 require_relative '../libs/vidyard_login_page'
 require_relative '../libs/vidyard_dashboard_page'

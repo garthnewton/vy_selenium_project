@@ -43,4 +43,11 @@ module CommonFeatures
   def end_driver! (active_driver)
     active_driver.quit
   end
+
+  # def check_analytics (active_driver)
+  #   raaktest = Raakt::Test.new(active_driver.page_source)
+  #   result = raaktest.all
+  #   puts result
+  #
+  # end
 end
