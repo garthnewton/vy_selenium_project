@@ -18,13 +18,13 @@ describe 'User logs in and edits a player with more than 50 chapters' do
   end
 
   it 'and opens the wizard' do
-    @summary_page.modify_chapters_button.click
+    @summary_page.modify_videos_button.click
     wait.until {@my_wizard.wizard_save_button.displayed?}
     @my_wizard.wizard_close_button.click
   end
 
   it 'adds a new video to the player' do
-    @summary_page.modify_chapters_button.click
+    @summary_page.modify_videos_button.click
     @my_wizard.add_from_your_computer_button.click
     wait.until {@my_wizard.choose_video_file_button}
     @my_wizard.choose_video_file_button.click

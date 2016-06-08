@@ -79,7 +79,7 @@ describe VidyardDashboardPage do
 
         it 'and chooses the first video provided' do
           wait.until {@my_wizard.select_first_youtube_result.displayed?}
-          @my_wizard.select_first_youtube_result.click
+          @my_wizard.select_first_youtube_result.click #TODO search youtube is broken. make sure this works when it is not broken
         end
 
         it 'and unselects that video' do
@@ -108,6 +108,7 @@ describe VidyardDashboardPage do
       end
 
       it 'clicks the Edit button for the first player' do
+        @my_page.first_player_panel.click
         @my_page.first_player_edit_button.click
       end
 

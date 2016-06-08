@@ -24,7 +24,7 @@ class VidyardDashboardPage
   end
 
   def new_player_modal_title
-    'Select Chapters'
+    'Select Videos'
   end
 
 
@@ -33,8 +33,12 @@ class VidyardDashboardPage
     @active_driver.find_element(:id, 'import_button')
   end
 
+  def first_player_panel
+    @active_driver.find_element(:class, 'player-container')
+  end
+
   def first_player_edit_button
-    @active_driver.find_element(:css, 'a.btn.btn-primary.edit')
+    @active_driver.find_element(:css, '[href^=\'/players/\']')
   end
 
   def find_specific_player (player_name)
