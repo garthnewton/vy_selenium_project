@@ -6,6 +6,7 @@ describe PlayerSettingsPage do
     before(:all) do
       @driver = create_active_driver!
       LoginPage.new(@driver, BASE_URL).log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+      VidyardDashboardPage.new(@driver, BASE_URL).first_player_panel.click
       VidyardDashboardPage.new(@driver, BASE_URL).first_player_edit_button.click
       @summary_page = PlayerSummaryPage.new(@driver)
       @my_page = PlayerSettingsPage.new(@driver)
@@ -27,17 +28,18 @@ describe PlayerSettingsPage do
       before(:all) do
         @summary_page.settings_button.click
         expect(@driver.current_url).to match(/settings/)
-        expect(@my_page.panel_title.text).to eq(@my_page.player_option_panel_title)
+        expect(@my_page.player_description_field.displayed?)
       end
 
       it 'clears the field and types the name of the Player' do
+        @my_page.wait.until {(@my_page.support_button).displayed?}
         @my_page.player_name_field.clear
         @my_page.player_name_field.send_keys(@my_title)
       end
 
       it 'then saves the changes' do
         @my_page.player_options_save_button.click
-        @my_page.back_button.click  #returns the user to the player page
+        @my_page.video_tab.click  #returns the user to the player page
       end
 
       it 'and expects to see the updated name on the player page' do

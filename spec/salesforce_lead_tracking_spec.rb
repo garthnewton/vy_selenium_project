@@ -1,5 +1,6 @@
 require_relative './spec_helper.rb'
 
+#currently this is a proof of concept. It is not working, and will stay that way for at least the immediate future
 describe SalesforceLoginPage do
   describe 'User wants to see if the new lead has been added to Salesforce' do
     before(:all) do
