@@ -35,6 +35,7 @@ module CommonFeatures
 
   def click_element (element)
     element.click
+    sleep(1)
   end
 
   def is_checked? (element)
