@@ -12,14 +12,15 @@ module CommonFeatures
       active_driver = Selenium::WebDriver.for(:remote, :url => 'http://localhost:9134')
     end
 
-    active_driver.manage.timeouts.implicit_wait = 15
+    # Setting implicit wait to 3 seconds so that the wait.until calls will top out at 3 seconds
+    active_driver.manage.timeouts.implicit_wait = 3
     active_driver.manage.window.resize_to(1920, 1080)
 
     return active_driver
   end
 
   def wait
-    Selenium::WebDriver::Wait.new(:timeout => 30)
+    Selenium::WebDriver::Wait.new(:timeout => 10)
   end
 
   #Currently setup to look at the URL, however using /{comparison text}/ could work for Groups and Users

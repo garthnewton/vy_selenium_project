@@ -28,6 +28,7 @@ describe LoginPage do
 
       it 'enters a valid email address and password then logs in expecting the Dashboard page' do
         @my_page.log_into_vidyard(VIDYARD_LOGIN_NAME, VIDYARD_LOGIN_PASSWORD)
+        @driver.wait.until {/Video Marketing & Sales Enablement/.match(@driver.title)}
         expect(@driver.title).to eq('Video Marketing & Sales Enablement') #should be a property for the Dashboard page object
       end
     end
