@@ -34,6 +34,7 @@ module CommonFeatures
   end
 
   def click_element (element)
+    wait.until {element.displayed?}
     element.click
     sleep(1)
   end

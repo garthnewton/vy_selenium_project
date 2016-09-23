@@ -38,7 +38,7 @@ class VidyardDashboardPage
   end
 
   def first_player_edit_button
-    @active_driver.find_element(:css, '[href^=\'/players/\']')
+    @active_driver.find_element(:css, '#players [href^=\'/players/\']')
   end
 
   def find_specific_player (player_name)
