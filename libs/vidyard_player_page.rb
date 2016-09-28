@@ -8,8 +8,8 @@ class PlayerSettingsPage
   end
 
 #properties
-  def player_option_panel_title
-    'General Settings'
+  def general_option_button_text
+    'General'
   end
 
 #locators
@@ -38,7 +38,7 @@ class PlayerSettingsPage
     @active_driver.find_element(:css, 'div.remove-button')
   end
 
-  def player_options_save_button
+  def player_options_save_button # TODO selenium doesn't like the javascript save button. need to find a good way to click save
     @active_driver.find_element(:link, 'Save Changes')
   end
 
@@ -48,6 +48,18 @@ class PlayerSettingsPage
 
   def success_banner
     @active_driver.find_element(:id, 'header_success')
+  end
+
+  def selected_submenu_button
+    @active_driver.find_element(:css, '#submenu-bar .selected')
+  end
+
+  def video_tab
+    @active_driver.find_element(:id, 'player-chapter-count')
+  end
+
+  def support_button
+    @active_driver.find_element(:id, 'habla_sizebutton_a')
   end
 
 #functions

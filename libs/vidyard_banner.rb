@@ -42,10 +42,11 @@ class VidyardBanner
 
 #functions
   def log_out_of_vidyard
-    dashboard_link.click
     wait.until {user_drop_down_menu.displayed?}
     user_drop_down_menu.click
+    wait.until {logout_menu_item.displayed?}
     logout_menu_item.click
+    sleep(1)
   end
 
   def return_to_dashboard

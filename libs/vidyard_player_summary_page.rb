@@ -15,7 +15,7 @@ class PlayerSummaryPage
   end
 
   def settings_button
-    @active_driver.find_element(:css, 'a#settings_button')
+    @active_driver.find_element(:css, '.nav-tabs [href*=\'/settings\']')
   end
 
   def splash_screen_button
@@ -30,7 +30,7 @@ class PlayerSummaryPage
     @active_driver.find_element(:css, 'a.play_button')
   end
 
-  def modify_chapters_button
+  def modify_videos_button
     @active_driver.find_element(:id, 'edit_chapters')
   end
 

@@ -10,14 +10,13 @@ describe VidyardAnalyticsPage do
     end
 
     after(:all) do
-      click_element(@my_banner.dashboard_link)
       @my_banner.log_out_of_vidyard
-     end_driver!(@driver)
+      end_driver!(@driver)
     end
 
     it 'navigates to the analytics page' do
+      @driver.wait.until { @my_banner.analytics_drop_down_menu.displayed? }
       click_element(@my_banner.analytics_drop_down_menu)
-      click_element(@my_banner.analytics_link)
       expect(viewing_expected_page?(@driver, @my_page)).to be true
     end
 

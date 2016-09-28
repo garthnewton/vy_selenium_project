@@ -21,7 +21,6 @@ describe VidyardBanner do
 
     it 'clicks the Analytics link and expects to see the analytics page' do
       click_element(@my_banner.analytics_drop_down_menu)
-      click_element(@my_banner.analytics_link)
 
       expected_page = VidyardAnalyticsPage.new(@driver, BASE_URL)
       expect(viewing_expected_page?(@driver, expected_page)).to be true
